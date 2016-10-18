@@ -42,13 +42,22 @@ As an example, we will build an API to manipulate information for **Object of Fr
 ```
 const express = require('express'),
       bodyParser = require('body-parser'),
-      path = require('path')
+      path = require('path'),
+      mongoose = require('mongoose'),
+      cors = require('cors')
 
 var app = express()
 var port = process.env.PORT || 9000
+var configDB = require('./config/database.js')
+
+mongoose.connect(configDB.url)
+app.use(cors())
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser())
 
 // Set starting routes
-app.use('/', require('./routes/api.js'))
+app.use('/',require('./routes/api'))
 
 // Set port
 app.listen(port)
@@ -59,7 +68,7 @@ console.log(`Live on port ${port}`)
 
 ```
 module.exports = {
-    'url' : 'mongodb://localhost/tutor101_restful_crud'
+  'url': 'mongodb://localhost/tutor101_restful_crud'
 }
 ```
 
@@ -120,20 +129,20 @@ function findAll(req, res, next){
 
 function findOne(req, res, next){
   models.findOne({
-    name:req.body.name
+    _id:req.params.id
   },(err, record) => {
     if(err) throw err
     if(!_.isEmpty(record)){
       res.status(200).json(record)
     } else {
-      res.status(400).json({error:"Name does not exist"})
+      res.status(400).json({error:"Record does not exist"})
     }
   })
 }
 
 function updateOne(req, res, next){
   models.findOne({
-    name:req.body.name
+    _id:req.params.id
   },(err, record) => {
     if(err) throw err
     if(record){
@@ -143,14 +152,14 @@ function updateOne(req, res, next){
         res.status(200).json(record)
       })
     } else {
-      res.status(400).json({error:"Name does not exist"})
+      res.status(400).json({error:"Record does not exist"})
     }
   })
 }
 
 function deleteOne(req, res, next){
   models.findOne({
-    name:req.body.name
+    _id:req.params.id
   },(err, record) => {
     if(err) throw err
     if(record){
@@ -159,7 +168,7 @@ function deleteOne(req, res, next){
         res.status(200).json(record)
       })
     } else {
-      res.status(400).json({error:"Name does not exist"})
+      res.status(400).json({error:"Record does not exist"})
     }
   })
 }
@@ -170,13 +179,13 @@ function deleteOne(req, res, next){
 ```
 const express = require('express')
 const router = express.Router()
-const fruits = require('../controllers/users')
+const fruits = require('../controllers/fruits')
 
 router.get('/fruits/', fruits.findAll)
-router.get('/fruits/:name', fruits.findOne)
+router.get('/fruits/:id', fruits.findOne)
 router.post('/fruits', fruits.createOne)
-router.put('/fruits/:name', fruits.updateOne)
-router.delete('/fruits/:name', fruits.deleteOne)
+router.put('/fruits/:id', fruits.updateOne)
+router.delete('/fruits/:id', fruits.deleteOne)
 
 module.exports = router
 ```
