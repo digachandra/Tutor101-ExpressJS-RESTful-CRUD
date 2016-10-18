@@ -1,0 +1,34 @@
+{
+  "name": "expressjs-restful-crud",
+  "version": "1.0.0",
+  "description": "Build simple RESTful API with ExpressJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/digachandra/Tutor101-ExpressJS-RESTful-CRUD.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "CRUD",
+    "ExpressJS",
+    "NodeJS",
+    "TUTOR",
+    "101"
+  ],
+  "author": "Septhianto Diga <hi@digachandra.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/digachandra/Tutor101-ExpressJS-RESTful-CRUD/issues"
+  },
+  "homepage": "https://github.com/digachandra/Tutor101-ExpressJS-RESTful-CRUD#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.4"
+  }
+}
