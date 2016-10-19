@@ -5,7 +5,7 @@
 Hi! welcome to Tutorial 101..
 in this tutorial we will learn about how to build RESTful API CRUD with ExpressJS and Mongoose. So let's get started!
 
-If you missing how to get started with ExpressJS, please refer to [Tutorial 101: Basic HTML CSS with Express JS & EJS](https://github.com/digachandra/Tutor101-basic-HTML-CSS-with-ExpressJS-and-EJS "Tutorial 101: Basic HTML CSS with Express JS & EJS")
+If you missing how to get started with ExpressJS, please refer to [Tutorial 101: Basic HTML CSS with Express JS & EJS](https://github.com/digachandra/tutor101-basic-html-css-express-ejs "Tutorial 101: Basic HTML CSS with Express JS & EJS")
 
 #### 1. Installation
 
